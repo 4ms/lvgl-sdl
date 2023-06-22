@@ -12,6 +12,9 @@ set(LV_CONF_PATH ${PROJECT_DIR}/../lv_conf.h CACHE STRING "" FORCE)
 add_definitions(-DLV_LVGL_H_INCLUDE_SIMPLE)
 add_definitions(-DLV_CONF_PATH=${LV_CONF_PATH})
 add_library(lvglsdl ${LVDRV_DIR}/lv_sdl_disp.c ${LVDRV_DIR}/lv_port_indev.c)
+target_compile_options(lvglsdl PUBLIC -I /opt/homebrew/include -arch arm64)
+target_link_options(lvglsdl PUBLIC -L /opt/homebrew/lib)
+
 target_include_directories(lvglsdl PUBLIC ${SDL2_INCLUDE_DIRS})
 
 file(GLOB LVGL_DRIVER_FILES
